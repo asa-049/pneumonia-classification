@@ -48,14 +48,23 @@
 | class_weight | 未改善（weight=[3,1] 时特异度反降至 44%）|
 | 欠采样（肺炎砍到与正常等量）| 未改善（特异度 44%，丢弃 2/3 肺炎数据反而模糊了决策边界）|
 
+## OOD 拒识 · Out-of-Distribution Detection
+
+为让模型遇到"非胸片"输入时能提示而非瞎猜，实现了 out-of-distribution 拒识：在正常/肺炎之外增加第三类 `OTHER`，用 300 张合成非胸片（噪声 / 渐变 / 几何图形 / 条纹 / 棋盘格）训练。
+
+- **效果**：300 张合成非胸片 **100% 被正确拒识**（全部判为 OTHER）
+- **代价（tradeoff）**：三分类使原任务的正常类特异度从 55~64% 降至 45%——单一模型做三分类的固有代价
+- **改进方向**：两级级联（先"是否胸片"二分类把关，再肺炎二分类）可在保留拒识的同时不伤原任务
+
 ## 运行 · Run
 
 ```bash
 pip install torch torchvision scikit-learn pillow numpy
-python train.py
+python train.py        # 主模型：正常/肺炎二分类 + 阈值调优
+python train_ood.py    # OOD 拒识版：三分类，自动生成合成非胸片并训练
 ```
 
-把 `train.py` 里的 `BASE` 改成你的数据路径即可。
+把脚本里的 `BASE` 改成你的数据路径即可。`train_ood.py` 会自动生成 300 张合成非胸片，训练三分类模型并输出拒识结果。
 
 ## 讨论 · Discussion
 
