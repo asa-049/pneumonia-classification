@@ -1,0 +1,11 @@
+# 权重文件（约 45 MB，不进仓库）
+*.pt
+*.pth
+
+# Python / Jupyter 缓存
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 训练日志
+*.log
