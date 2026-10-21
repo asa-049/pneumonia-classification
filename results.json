@@ -1,0 +1,94 @@
+{
+  "seed": 42,
+  "img_size": 128,
+  "epochs": 5,
+  "split": "patient-level 15%",
+  "n_train": 4434,
+  "n_val": 798,
+  "n_test": 624,
+  "best_epoch": 4,
+  "val_auc": 0.9995,
+  "test_auc": 0.9801,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.149,
+      "val_auc": 0.997,
+      "val_acc": 0.9724,
+      "sec": 173.5
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0791,
+      "val_auc": 0.9987,
+      "val_acc": 0.9699,
+      "sec": 168.7
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0603,
+      "val_auc": 0.9992,
+      "val_acc": 0.9774,
+      "sec": 169.5
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0472,
+      "val_auc": 0.9995,
+      "val_acc": 0.99,
+      "sec": 172.1
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0509,
+      "val_auc": 0.9987,
+      "val_acc": 0.9837,
+      "sec": 172.1
+    }
+  ],
+  "val_thresholds": {
+    "youden": {
+      "threshold": 0.89,
+      "tp": 584,
+      "fp": 0,
+      "fn": 11,
+      "tn": 203,
+      "sens": 0.9815,
+      "spec": 1.0,
+      "acc": 0.9862
+    },
+    "screening": {
+      "threshold": 0.47,
+      "tp": 592,
+      "fp": 5,
+      "fn": 3,
+      "tn": 198,
+      "sens": 0.995,
+      "spec": 0.9754,
+      "acc": 0.99
+    }
+  },
+  "test_metrics": {
+    "youden": {
+      "threshold": 0.89,
+      "tp": 387,
+      "fp": 64,
+      "fn": 3,
+      "tn": 170,
+      "sens": 0.9923,
+      "spec": 0.7265,
+      "acc": 0.8926
+    },
+    "screening": {
+      "threshold": 0.47,
+      "tp": 389,
+      "fp": 96,
+      "fn": 1,
+      "tn": 138,
+      "sens": 0.9974,
+      "spec": 0.5897,
+      "acc": 0.8446
+    }
+  },
+  "elapsed_sec": 882.4
+}
